@@ -2,16 +2,20 @@ var betTotal;
 var verouiller = false;
 var jeton = 100;
 var gainMax = 0;
+var tableauMises = [];
 
-function ajoutBet() {
+function ajoutBet(param, valeurMise) {
     var champ = document.getElementById('champ');
     var pari = document.getElementById('Pari');
+    var gain = document.getElementById('Gain');
     if (champ.value <= jeton) {
         if (!verouiller) {
             pari.value = pari.value + '+' + champ.value;
             calculer();
+	    tableauMises.push(valeurMise);
             jeton = jeton - champ.value;
             displayJeton();
+	    gain.value = pari.value * param;
         }
     } else {
         pari.value = "Erreur sale pauvre";
