@@ -14,8 +14,10 @@
     <p>Nombre de jeton :
         <span id="nbJeton"></span></p>
     <br>
-    <div id="ballcontainer"><img id="ball" src="images/ball.png"></div>
-    <div><img id="roulette" src="images/ruleta.png"></div>
+    <div id="wheel">
+      <div id="ballcontainer"><img id="ball" src="images/ball.png"></div>
+      <img id="roulette" src="images/roulette.png">
+    </div>
 
   <button onclick="play()">PLAY</button>
 
@@ -26,6 +28,8 @@
 
     <input class="bouton" type="button" value="Bloquer la mise" onclick="bloquerBet();"></input>
     <input class="bouton" type="button" value="Debloquer la mise" onclick="debloquerBet();"></input>
+    <p>Resultat</p>
+    <input id="resultat" type="text" name="resultat" readonly="readonly" value="" ></input>
     <table>
         <tr>
             <td><input class="boutonVert" type="button" value="0" onclick="ajoutBet('36', this.value)"></input>
