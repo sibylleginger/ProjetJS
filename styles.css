@@ -352,3 +352,22 @@ border-bottom: none;
     left: 280px;
     transform: rotate(0deg);
 }
+
+.boutonVert {
+    background : green;
+    color : white;
+}
+
+.boutonNoir {
+    background : black;
+    color : white;
+}
+
+.boutonRouge {
+    background : red;
+    color : white;
+}
+
+.boutonSpe {
+    width : 63px;
+}
