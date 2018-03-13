@@ -47,15 +47,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     displayJeton();
 }); // NE PAS TOUCHER
 
-function reset() {
+/*function reset() {
 	var rotateroulette = document.getElementById('ballcontainer');
 	rotateroulette.removeAttribute('style');
 	var css = 'transform: rotate(0 deg);';
 	rotateroulette.setAttribute('style', css);
-}
+}*/
 
 function play() {
-	reset();
+
     var rotateroulette = document.getElementById('ballcontainer');
     rotateroulette.removeAttribute('style');
     
