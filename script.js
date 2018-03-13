@@ -44,7 +44,7 @@ function displayJeton() {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     displayJeton();
-});
+}); // NE PAS TOUCHER
 
 function play() {
     var playball = document.getElementById('ballcontainer');
