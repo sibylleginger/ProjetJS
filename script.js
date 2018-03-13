@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 }*/
 
 function play() {
-
     var rotateroulette = document.getElementById('ballcontainer');
     rotateroulette.removeAttribute('style');
     
@@ -69,13 +68,14 @@ function play() {
     rotateroulette.setAttribute(
         'style', css
     );
+}
 
 function isZero(number) {
 	// booléen vérifiant si number est 0
     if (number == 0) {
-        return 1;
+        return true;
     } else {
-        return 0;
+        return false;
     }
 }
 
@@ -128,15 +128,15 @@ function isRed(number) {
     }
 
     function gain(number) {
-		if (isZero(number)) {
-			for (int i = 0; i <= tableauMises.length; i++) {
-				if (isZero(tableauMises[i]) {
+		if (isZero(number)){
+			for (var i = 0; i <= tableauMises.length; i++) {
+				if (isZero(tableauMises[i])) {
 					jeton = jeton + 36 * tableauValeur[i];
 				}
 			}
 		}
 		else {
-			for (int i = 0; i <= tableauMises.length; i++) {
+			for (var i = 0; i <= tableauMises.length; i++) {
 				if (tableauMises[i] == isRed(number) || tableauMises[i] == isEven(number) || tableauMises[i] == moitie(number)) {
 					jeton = jeton + 2 * tableauValeur[i];
 				}
@@ -146,8 +146,10 @@ function isRed(number) {
 				else if (tableauMises[i] == number && tableauMises[i]) {
 					jeton = jeton + 36 * tableauValeur[i];
 				}
+            }
 		}
-    }
     tableauMises = [];
     tableauValeur = [];
-}
+    }
+    
+
