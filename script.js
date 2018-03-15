@@ -4,6 +4,7 @@ var jeton = 100;
 var gainMax = 0;
 var tableauMises = [];
 var tabChiffres = [0,32,15,19,4,21,2,25,17,34,6,27,13,36,11,30,8,23,10,5,24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26];
+var jouer = true;
 
 function ajoutBet(param, valeurMise) {
     var champ = document.getElementById('champ');
@@ -25,6 +26,8 @@ function ajoutBet(param, valeurMise) {
 
 function bloquerBet() {
     verouiller = true;
+    var rotateroulette = document.getElementById('ballcontainer');
+    reset(rotateroulette);
 }
 
 function debloquerBet() {
@@ -47,27 +50,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     displayJeton();
 }); // NE PAS TOUCHER
 
-/*function reset() {
+function reset(ball) {
 	var rotateroulette = document.getElementById('ballcontainer');
 	rotateroulette.removeAttribute('style');
 	var css = 'transform: rotate(0 deg);';
 	rotateroulette.setAttribute('style', css);
-}*/
+    jouer = true;
+}
 
 function play() {
-    var rotateroulette = document.getElementById('ballcontainer');
-    rotateroulette.removeAttribute('style');
+    if (jouer == false) {
+        alert("Il faut remettre la balle à zéro!")
+    } else {
+        var rotateroulette = document.getElementById('ballcontainer');
+        rotateroulette.removeAttribute('style');
+        
+        var deg = Math.floor(Math.random() * 36);
+        var deg2 = deg*9.7 + 360
+        var res = tabChiffres[deg];
+        document.getElementById('resultat').value = res;
+        
+        var css = '-webkit-transform: rotate(' + deg2 + 'deg);';
+        
+        rotateroulette.setAttribute(
+            'style', css
+        );
+        jouer = false;
+    }
+    /*var update = document.getElementById('wheel');
+    update.load("Roulette.html#wheel");*/   
+}
+
+function rotate(ball) {
     
-    var deg = Math.floor(Math.random() * 36);
-    var deg2 = deg*9.7 + 360
-    var res = tabChiffres[deg];
-    document.getElementById('resultat').value = res;
-    
-    var css = '-webkit-transform: rotate(' + deg2 + 'deg);';
-    
-    rotateroulette.setAttribute(
-        'style', css
-    );
 }
 
 function isZero(number) {
