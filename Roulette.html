@@ -10,134 +10,145 @@
 
 <body>
 
-    <h1>Roulette</h1>
-    <p>Nombre de jeton :
-        <span id="nbJeton"></span></p>
-    <br>
-    <div id="wheel">
-      <div id="ballcontainer"><img id="ball" src="images/ball.png"></div>
-      <img id="roulette" src="images/roulette.png">
+    <div>
+       <h1>Roulette</h1>
+        <p>Nombre de jeton :
+            <span id="nbJeton"></span></p>
+        <br>
+        <div id="wheel">
+          <div id="ballcontainer"><img id="ball" src="images/ball.png"></div>
+          <img id="roulette" src="images/roulette.png">
+        </div> 
     </div>
+    <div>
+        <button id="startbutton" value="PLAY" onclick="play()">PLAY</button>
+        <div class="zone">
+            <label for="Pari">Pari</label>
+            <input id="Pari" name="Pari" class="Pari-ecran" type="text" disabled value=""></input>
+        </div>
+        <div class="zone">
+            <label for="Gain">Gain</label>
+            <input id="Gain" name="Gain" class="Gain-ecran" type="text" disabled value=""></input>
+        </div>
+        <div class="zone">
+            <label for="champ">Mise</label>
+            <input id="champ" name="champ" type="text"/></input>
+        </div>
 
-  <button onclick="play()">PLAY</button>
-
-    <input id="Pari" class="Pari-ecran" type="text" disabled value=""></input>
-    <input id="Gain" class="Gain-ecran" type="text" disabled value=""></input>
-
-    <input id="champ" type="text"/>
-
-    <input class="bouton" type="button" value="Bloquer la mise/0" onclick="bloquerBet();"></input>
-    <input class="bouton" type="button" value="Debloquer la mise" onclick="debloquerBet();"></input>
-    <p>Resultat</p>
-    <input id="resultat" type="text" name="resultat" readonly="readonly" value="" ></input>
-    <table>
-        <tr>
-            <td><input class="boutonVert" type="button" value="0" onclick="ajoutBet('36', this.value)"></input>
-            </td>
+        <input class="bouton" type="button" value="Bloquer la mise" onclick="bloquerBet();"></input>
+        <input class="bouton" type="button" value="Debloquer la mise" onclick="debloquerBet();"></input>
+        <p>Resultat</p>
+        <input id="resultat" type="text" name="resultat" readonly="readonly" value="" ></input>
+        <table>
             <tr>
-                <td><input class="boutonRouge" type="button" value="3" onclick="ajoutBet('36', this.value)"></input>
+                <td><input class="boutonVert" type="button" value="0" onclick="ajoutBet('36', this.value)"></input>
                 </td>
-                <td><input class="boutonNoir" type="button" value="6" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="9" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="12" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="15" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="18" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="21" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="24" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="27" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="30" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="33" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="36" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="bouton" type="button" value="1er douzhaine" onclick="ajoutBet('3', '37')"></input>
-                </td>
-            </tr>
-            <tr>
-                <td><input class="boutonNoir" type="button" value="2" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="5" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="8" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="11" onclick="ajoutBet('36', this.value)"></input>              
-                </td>               
-                <td><input class="boutonRouge" type="button" value="14" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="17" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="20" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="23" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="26" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="29" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="32" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="35" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="bouton" type="button" value="3e douzhaine" onclick="ajoutBet('3', '38')"></input>
-                </td>
-            </tr>
-            <tr>
-                <td><input class="boutonRouge" type="button" value="1" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="4" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="7" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="10" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="13" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="16" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="19" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="22" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="25" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="28" onclick="ajoutBet('36', this.value);"></input>
-                </td>
-                <td><input class="boutonNoir" type="button" value="31" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="boutonRouge" type="button" value="34" onclick="ajoutBet('36', this.value)"></input>
-                </td>
-                <td><input class="bouton" type="button" value="3e douzhaine" onclick="ajoutBet('3', '39")"></input>
-                </td>
-            </tr>
-    </table>
-            <tr>
-                </td>
-                <td><input class="boutonSpe" type="button" value="1 à 18" onclick="ajoutBet('2', '40')"></input>
-                </td>
-                </td>
-                <td><input class="boutonSpe" type="button" value="Pair" onclick="ajoutBet('2', '41')"></input>
-                </td>
-                </td>
-                <td><input class="boutonSpe" type="button" value="Rouge" onclick="ajoutBet('2', '42')"></input>
-                </td>
-                </td>
-                <td><input class="boutonSpe" type="button" value="Noir" onclick="ajoutBet('2', '43')"></input>
-                </td>
-                </td>
-                <td><input class="boutonSpe" type="button" value="Impair" onclick="ajoutBet('2', '44')"></input>
-                </td>
-                </td>
-                <td><input class="boutonSpe" type="button" value="19 à 36" onclick="ajoutBet('2', '45')"></input>
-                </td>
-            </tr>
+                <tr>
+                    <td><input class="boutonRouge color" type="button" value="3" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="6" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="9" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="12" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="15" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="18" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="21" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="24" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="27" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="30" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="33" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="36" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="bouton" type="button" value="1er douzhaine" onclick="ajoutBet('3', '37')"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input class="boutonNoir color" type="button" value="2" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="5" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="8" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="11" onclick="ajoutBet('36', this.value)"></input>              
+                    </td>               
+                    <td><input class="boutonRouge color" type="button" value="14" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="17" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="20" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="23" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="26" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="29" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="32" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="35" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="bouton" type="button" value="3e douzhaine" onclick="ajoutBet('3', '38')"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input class="boutonRouge color color" type="button" value="1" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="4" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="7" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="10" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="13" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="16" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="19" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="22" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="25" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="28" onclick="ajoutBet('36', this.value);"></input>
+                    </td>
+                    <td><input class="boutonNoir color" type="button" value="31" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="boutonRouge color" type="button" value="34" onclick="ajoutBet('36', this.value)"></input>
+                    </td>
+                    <td><input class="bouton" type="button" value="3e douzhaine" onclick="ajoutBet('3', '39")"></input>
+                    </td>
+                </tr>
+        </table>
+                <div id="lastrow">
+                    </td>
+                    <td><input class="boutonSpe" type="button" value="1 à 18" onclick="ajoutBet('2', '40')"></input>
+                    </td>
+                    </td>
+                    <td><input class="boutonSpe" type="button" value="Pair" onclick="ajoutBet('2', '41')"></input>
+                    </td>
+                    </td>
+                    <td><input class="boutonSpe" type="button" value="Rouge" onclick="ajoutBet('2', '42')"></input>
+                    </td>
+                    </td>
+                    <td><input class="boutonSpe" type="button" value="Noir" onclick="ajoutBet('2', '43')"></input>
+                    </td>
+                    </td>
+                    <td><input class="boutonSpe" type="button" value="Impair" onclick="ajoutBet('2', '44')"></input>
+                    </td>
+                    </td>
+                    <td><input class="boutonSpe" type="button" value="19 à 36" onclick="ajoutBet('2', '45')"></input>
+                    </td>
+                </div>  
+    </div>
+    
 
 </body>

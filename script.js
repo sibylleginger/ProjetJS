@@ -26,8 +26,6 @@ function ajoutBet(param, valeurMise) {
 
 function bloquerBet() {
     verouiller = true;
-    var rotateroulette = document.getElementById('ballcontainer');
-    reset(rotateroulette);
 }
 
 function debloquerBet() {
@@ -50,21 +48,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     displayJeton();
 }); // NE PAS TOUCHER
 
-function reset(ball) {
-	var rotateroulette = document.getElementById('ballcontainer');
-	rotateroulette.removeAttribute('style');
-	var css = 'transform: rotate(0 deg);';
-	rotateroulette.setAttribute('style', css);
-    jouer = true;
-}
-
 function play() {
+    var rotateroulette = document.getElementById('ballcontainer');
+    var buttonplay = document.getElementById('startbutton');
     if (jouer == false) {
-        alert("Il faut remettre la balle à zéro!")
-    } else {
-        var rotateroulette = document.getElementById('ballcontainer');
         rotateroulette.removeAttribute('style');
-        
+        var css = 'transform: rotate(0 deg);';
+        rotateroulette.setAttribute('style', css);
+        jouer = true;
+        buttonplay.innerHTML = 'PLAY';
+
+    } else {
+        rotateroulette.removeAttribute('style');        
         var deg = Math.floor(Math.random() * 36);
         var deg2 = deg*9.7 + 360
         var res = tabChiffres[deg];
@@ -76,6 +71,7 @@ function play() {
             'style', css
         );
         jouer = false;
+        buttonplay.innerHTML = 'RESET BALL';
     }
     /*var update = document.getElementById('wheel');
     update.load("Roulette.html#wheel");*/   

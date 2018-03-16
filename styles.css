@@ -32,9 +32,11 @@
 
 body {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+
 }
 
 #wheel {
@@ -59,4 +61,22 @@ body {
 
 .boutonSpe {
     width : 63px;
+}
+
+#lastrow {
+    display: flex;
+    flex-direction: row;
+}
+
+table input[type=button] {
+    border: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+.color {
+    width:30px;
+    height: 30px;
+    border-radius: 2px;
 }
