@@ -3,6 +3,7 @@ var verouiller = false;
 var jeton = 100;
 var gainMax = 0;
 var tableauMises = [];
+var tableauValeur = [];
 var tabChiffres = [0,32,15,19,4,21,2,25,17,34,6,27,13,36,11,30,8,23,10,5,24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26];
 var jouer = true;
 
@@ -10,19 +11,23 @@ function ajoutBet(param, valeurMise) {
     var champ = document.getElementById('champ');
     var pari = document.getElementById('Pari');
     var gain = document.getElementById('Gain');
-    if (champ.value <= jeton) {
+    if (champ.value <= jeton && champ.value) {
         if (!verouiller) {
             pari.value = pari.value + '+' + champ.value;
             calculer();
 	        tableauMises.push(valeurMise);
+            tableauValeur.push(champ.value);
             jeton = jeton - champ.value;
             displayJeton();
 	        gain.value = pari.value * param;
         }
+    } else if(!champ.value){
+        pari.value = "Veuillez rentrez une valeur gros con";
     } else {
         pari.value = "Erreur sale pauvre";
-    }
+    } 
 }
+
 
 function bloquerBet() {
     verouiller = true;
@@ -133,7 +138,7 @@ function isRed(number) {
         }
     }
 
-    function gain(number) {
+    function calculGain(number) {
 		if (isZero(number)){
 			for (var i = 0; i <= tableauMises.length; i++) {
 				if (isZero(tableauMises[i])) {
@@ -154,8 +159,7 @@ function isRed(number) {
 				}
             }
 		}
-    tableauMises = [];
-    tableauValeur = [];
+        displayJeton();
     }
     
 
