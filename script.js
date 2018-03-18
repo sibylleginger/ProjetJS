@@ -57,6 +57,9 @@ function play() {
     var rotateroulette = document.getElementById('ballcontainer');
     var buttonplay = document.getElementById('startbutton');
     if (jouer == false) {
+	document.getElementById('champ').value = "";
+        document.getElementById('Pari').value = "";
+        document.getElementById('Gain').value = "";
         rotateroulette.removeAttribute('style');
         var css = 'transform: rotate(0 deg);';
         rotateroulette.setAttribute('style', css);
@@ -77,7 +80,8 @@ function play() {
         );
         jouer = false;
         buttonplay.innerHTML = 'RESET BALL';
-    }  
+    }
+	calculGain(res);
 }
 
 
@@ -94,10 +98,10 @@ function isRed(number) {
 	// vérifie la couleur de number
     if (!isZero(number)) {
         if ((number == 2) || (number == 4) || (number == 6) || (number == 8) || (number == 10) || (number == 11) || (number == 13) || (number == 15) || (number == 17) || (number == 20) || (number == 22) || (number == 24) || (number == 26) || (number == 28) || (number == 29) || (number == 31) || (number == 33) || (number == 36)) {
-            return 42;
+            return 43;
             // est noir
         } else {
-            return 43;
+            return 42;
             // est rouge
         }
     }
@@ -148,7 +152,7 @@ function isRed(number) {
 		}
 		else {
 			for (var i = 0; i <= tableauMises.length; i++) {
-				if (tableauMises[i] == isRed(number) || tableauMises[i] == isEven(number) || tableauMises[i] == moitie(number)) {
+				if (tableauMises[i] == isRed(number)) {
 					jeton = jeton + 2 * tableauValeur[i];
 				}
 				else if (tableauMises[i] == douzaine(number)) {
@@ -157,9 +161,17 @@ function isRed(number) {
 				else if (tableauMises[i] == number && tableauMises[i]) {
 					jeton = jeton + 36 * tableauValeur[i];
 				}
+                else if (tableauMises[i] == isEven(number)){
+                    jeton = jeton + 2 * tableauValeur[i];
+                }
+                else if (tableauMises[i] == moitie(number)){
+                    jeton = jeton + 2 * tableauValeur[i];
+                }
             }
 		}
         displayJeton();
+        tableauMises = [];
+        tableauValeur = [];
     }
     
 
