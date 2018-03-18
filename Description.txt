@@ -1,1 +1,5 @@
+Camille Laurence, Sibylle Roux, Aloys Vernhet
 
+Projet : Roulette
+
+Miser des jetons et faire des gains. Faire tourner la roulette.
