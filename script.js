@@ -51,10 +51,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 }); // NE PAS TOUCHER
 
 function play() {
+    var champ = document.getElementById('champ');
+    var pari = document.getElementById('Pari');
+    var gain = document.getElementById('Gain');
     if(verouiller){
         var rotateroulette = document.getElementById('ballcontainer');
         var buttonplay = document.getElementById('startbutton');
+        var gain
         if (jouer == false) {
+            champ.value = "";
+            pari.value = "";
+            gain.value = "";
             rotateroulette.removeAttribute('style');
             var css = 'transform: rotate(0 deg);';
             rotateroulette.setAttribute('style', css);
@@ -73,7 +80,7 @@ function play() {
             jouer = false;
             buttonplay.innerHTML = 'RESET BALL';
         }
-	calculGain(deg);
+        calculGain(deg);
     }
     /*var update = document.getElementById('wheel');
     update.load("Roulette.html#wheel");*/   
