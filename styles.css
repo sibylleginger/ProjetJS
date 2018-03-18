@@ -61,6 +61,7 @@ body {
 
 .boutonSpe {
     width : 63px;
+    margin: 1px;
 }
 
 #lastrow {
@@ -72,11 +73,31 @@ table input[type=button] {
     border: none;
 }
 
+.zone input[type=text] {
+    width
+}
+
 table {
     border-collapse: collapse;
 }
 .color {
     width:30px;
     height: 30px;
+    border-radius: 2px;
+}
+
+#resultat {
+    width: 30px;
+}
+
+#startbutton {
+    margin: 5px;
+    border-color: black;
+    border: 2px;
+}
+
+.gris {
+    height: 30px;
+    border: none;
     border-radius: 2px;
 }

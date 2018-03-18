@@ -3,7 +3,6 @@ var verouiller = false;
 var jeton = 100;
 var gainMax = 0;
 var tableauMises = [];
-var tableauValeur = [];
 var tabChiffres = [0,32,15,19,4,21,2,25,17,34,6,27,13,36,11,30,8,23,10,5,24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26];
 var jouer = true;
 
@@ -11,7 +10,7 @@ function ajoutBet(param, valeurMise) {
     var champ = document.getElementById('champ');
     var pari = document.getElementById('Pari');
     var gain = document.getElementById('Gain');
-    if (champ.value <= jeton && champ.value) {
+    if (champ.value <= jeton) {
         if (!verouiller) {
             pari.value = pari.value + '+' + champ.value;
             calculer();
@@ -20,11 +19,9 @@ function ajoutBet(param, valeurMise) {
             displayJeton();
 	        gain.value = pari.value * param;
         }
-    } else if(!champ.value){
-        pari.value = "Veuillez rentrez une valeur gros con";
     } else {
         pari.value = "Erreur sale pauvre";
-    } 
+    }
 }
 
 function bloquerBet() {
@@ -52,44 +49,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
 }); // NE PAS TOUCHER
 
 function play() {
-    var champ = document.getElementById('champ');
-    var pari = document.getElementById('Pari');
-    var gain = document.getElementById('Gain');
-    if(verouiller){
-        var rotateroulette = document.getElementById('ballcontainer');
-        var buttonplay = document.getElementById('startbutton');
-        var gain
-        if (jouer == false) {
-            champ.value = "";
-            pari.value = "";
-            gain.value = "";
-            rotateroulette.removeAttribute('style');
-            var css = 'transform: rotate(0 deg);';
-            rotateroulette.setAttribute('style', css);
-            jouer = true;
-            buttonplay.innerHTML = 'PLAY';
-        } else {
-            rotateroulette.removeAttribute('style');        
-            var deg = Math.floor(Math.random() * 36);
-            var deg2 = deg*9.7 + 360
-            var res = tabChiffres[deg];
-            document.getElementById('resultat').value = res;
-            var css = '-webkit-transform: rotate(' + deg2 + 'deg);';
-            rotateroulette.setAttribute(
+    var rotateroulette = document.getElementById('ballcontainer');
+    var buttonplay = document.getElementById('startbutton');
+    if (jouer == false) {
+        rotateroulette.removeAttribute('style');
+        var css = 'transform: rotate(0 deg);';
+        rotateroulette.setAttribute('style', css);
+        jouer = true;
+        buttonplay.innerHTML = 'PLAY';
+
+    } else {
+        rotateroulette.removeAttribute('style');        
+        var deg = Math.floor(Math.random() * 36);
+        var deg2 = deg*9.7 + 360
+        var res = tabChiffres[deg];
+        document.getElementById('resultat').value = res;
+        
+        var css = '-webkit-transform: rotate(' + deg2 + 'deg);';
+        
+        rotateroulette.setAttribute(
             'style', css
-            );
-            jouer = false;
-            buttonplay.innerHTML = 'RESET BALL';
-        }
-        calculGain(deg);
-    }
-    /*var update = document.getElementById('wheel');
-    update.load("Roulette.html#wheel");*/   
+        );
+        jouer = false;
+        buttonplay.innerHTML = 'RESET BALL';
+    }  
 }
 
-function rotate(ball) {
-    
-}
 
 function isZero(number) {
 	// booléen vérifiant si number est 0
