@@ -7,24 +7,46 @@ var tableauValeur = [];
 var tabChiffres = [0,32,15,19,4,21,2,25,17,34,6,27,13,36,11,30,8,23,10,5,24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26];
 var jouer = true;
 
-function ajoutBet(param, valeurMise) {
+function ajoutBet(obj, param, valeurMise) {
     var champ = document.getElementById('champ');
     var pari = document.getElementById('Pari');
     var gain = document.getElementById('Gain');
     if (champ.value <= jeton && champ.value) {
         if (!verouiller) {
-            pari.value = pari.value + '+' + champ.value;
-            calculer();
-	        tableauMises.push(valeurMise);
-            tableauValeur.push(champ.value);
-            jeton = jeton - champ.value;
-            displayJeton();
-	        gain.value = pari.value * param;
+            if (obj.selected == true) {
+                if (tableauMises.length == 0) {
+                    obj.removeAttribute('style');
+                } else {
+                    obj.removeAttribute('style');
+                    obj.selected = false;
+
+                    pari.value = eval(pari.value + '-' + champ.value);
+                    var id = tableauMises.indexOf(valeurMise);
+                    tableauMises.splice(id, eval(id+"+1"));
+                    tableauValeur.splice(id, eval(id+"+1"));
+                    jeton = eval(jeton + '+' + champ.value);
+                    displayJeton();
+                    gain.value = eval(gain.value + '-' + champ.value + '*' + param);
+                }
+            }else {
+                pari.value = eval(pari.value + '+' + champ.value);
+                //calculer();
+                tableauMises.push(valeurMise);
+                tableauValeur.push(champ.value);
+                jeton = jeton - champ.value;
+                displayJeton();
+                gain.value = eval(gain.value + '+' + champ.value + '*' + param);
+                //obj.class = obj.class + " selected";
+                obj.style = "background-color: blue;";
+                obj.selected = true;
+            }
+            //var css = 'background-color: blue;';
+            //this.setAttribute('style', css);
         }
     } else if(!champ.value){
-        pari.value = "Veuillez rentrez une valeur gros con";
+        alert("Veuillez rentrez une mise");
     } else {
-        pari.value = "Erreur sale pauvre";
+        alert("Vous n'avez pas assez de jetons");
     } 
 }
 
@@ -56,32 +78,37 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function play() {
     var rotateroulette = document.getElementById('ballcontainer');
     var buttonplay = document.getElementById('startbutton');
-    if (jouer == false) {
-	document.getElementById('champ').value = "";
-        document.getElementById('Pari').value = "";
-        document.getElementById('Gain').value = "";
-        rotateroulette.removeAttribute('style');
-        var css = 'transform: rotate(0 deg);';
-        rotateroulette.setAttribute('style', css);
-        jouer = true;
-        buttonplay.innerHTML = 'PLAY';
+    var valuegain = document.getElementById('Gain');
+    if (valuegain.value == "") {
+        alert('Entrez votre mise');
+    }else {
+        if (!jouer) {
+            document.getElementById('champ').value = "";
+            document.getElementById('Pari').value = "";
+            document.getElementById('Gain').value = "";
+            rotateroulette.removeAttribute('style');
+            var css = 'transform: rotate(0 deg);';
+            rotateroulette.setAttribute('style', css);
+            jouer = true;
+            buttonplay.innerHTML = 'PLAY';
 
-    } else {
-        rotateroulette.removeAttribute('style');        
-        var deg = Math.floor(Math.random() * 36);
-        var deg2 = deg*9.7 + 360
-        var res = tabChiffres[deg];
-        document.getElementById('resultat').value = res;
-        
-        var css = '-webkit-transform: rotate(' + deg2 + 'deg);';
-        
-        rotateroulette.setAttribute(
-            'style', css
-        );
-        jouer = false;
-        buttonplay.innerHTML = 'RESET BALL';
+        } else {
+            rotateroulette.removeAttribute('style');        
+            var deg = Math.floor(Math.random() * 36);
+            var deg2 = deg*9.7 + 360;
+            var res = tabChiffres[deg];
+            document.getElementById('resultat').value = res;
+            
+            var css = '-webkit-transform: rotate(' + deg2 + 'deg);';
+            
+            rotateroulette.setAttribute(
+                'style', css
+            );
+            jouer = false;
+            buttonplay.innerHTML = 'RESET BALL';
+        }
+        calculGain(res);
     }
-	calculGain(res);
 }
 
 
@@ -143,6 +170,7 @@ function isRed(number) {
     }
 
     function calculGain(number) {
+        var gagner = false;
 		if (isZero(number)){
 			for (var i = 0; i <= tableauMises.length; i++) {
 				if (isZero(tableauMises[i])) {
@@ -172,6 +200,7 @@ function isRed(number) {
         displayJeton();
         tableauMises = [];
         tableauValeur = [];
+
     }
     
 
