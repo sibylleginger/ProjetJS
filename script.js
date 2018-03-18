@@ -73,6 +73,7 @@ function play() {
             jouer = false;
             buttonplay.innerHTML = 'RESET BALL';
         }
+	calculGain(deg);
     }
     /*var update = document.getElementById('wheel');
     update.load("Roulette.html#wheel");*/   
